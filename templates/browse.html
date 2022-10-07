@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+
+
+    <style>
+        .card img:hover {
+            border: 4px solid white;
+        }
+        
+        button:hover {
+            border: 1px solid white;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="" class="navbar-brand">
+                <img src="img/netflix_logo.png" alt="">
+            </a>
+        </div>
+    </nav>
+
+    <!-- profil seçimi -->
+    <div class="container">
+        <div class="row w-75 m-auto bg-black bg-opacity-25">
+            <h1 class="text-center text-light">Kimler İzliyor?</h1>
+            {% for profil in profiles %}
+            <div class="col-3 mt-5 mb-5">
+                <a href="{% url 'movies' profil.slug %}" class="text-decoration-none text-secondary">
+                    <div class="card bg-transparent">
+                        <img src="{{profil.resim.url}}" class="card-img-top" alt="">
+                        <div>
+                            <h5 class="card-title text-center ">{{profil.isim}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+ {% endfor %}
+
+            <div class="buton mb-5 text-center">
+                <a href="{% url 'create' %}" class="bg-dark text-secondary w-50 p-2 text-decoration-none">Profil Yönetimi</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

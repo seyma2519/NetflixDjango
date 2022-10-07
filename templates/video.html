@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+    {% if video.video %}  3eger video varsa
+    <video style="width: 100%; height: 100%;" controls>
+       <source src="{{video.video.url}}" type="video/mp4">
+    </video>
+    {% else %}
+    <p class="text-light">
+        Film henüz yüklenmedi
+    </p>
+    {% endif %}
+
+    
+
+{% endblock content %}
